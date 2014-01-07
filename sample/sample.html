@@ -5,6 +5,7 @@
 		<link href="../src/angular-multiline-ellipsis.css" rel="stylesheet" type="text/css" />
 		<link href="sample.css" rel="stylesheet" type="text/css" />
 		<script type="application/ecmascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js"></script>
+		<script type="application/ecmascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-sanitize.min.js"></script>
 		<script type="application/ecmascript" src="../src/angular-multiline-ellipsis.js"></script>
 		<script type="application/ecmascript" src="sample.js"></script>
 	</head>
@@ -24,7 +25,27 @@
 			</fieldset>
 			<fieldset>
 				<legend>Result</legend>
-				<div ml-ellipsis height="height" ng-style="style" style="border: 2ps solid gray;" ng-class="{ 'display-layout':displayLayout }">{{content}}</div>
+				<div ml-ellipsis ng-style="style" ng-class="{ 'display-layout':displayLayout }">{{content}}</div>
+			</fieldset>
+		</div>
+		<div ng-controller="ellipsisSampleCtrl">
+			<h2>Ellipsis test usage</h2>
+			<fieldset>
+				<legend>Paraeters</legend>
+				<label>
+					<div>Content:</div>
+					<textarea ng-model="content"></textarea>
+				</label>
+				<label>Height: <input ng-model="style.height" /></label>
+				<label>Width: <input ng-model="style.width" /></label>
+				<label><input type="checkbox" ng-model="displayLayout" /> Dislpay layout</label>
+				<label>Ellipsis: <input ng-model="ellipsis" /></label>
+			</fieldset>
+			<fieldset>
+				<legend>Result</legend>
+				<div ml-ellipsis ellipsis="ellipsis" ng-style="style" ng-class="{ 'display-layout':displayLayout }">
+					<span ng-bind-html="content"></span>
+				</div>
 			</fieldset>
 		</div>
 	</body>

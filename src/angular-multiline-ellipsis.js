@@ -8,19 +8,19 @@
 				restrict: 'EA',
 				transclude: true,
 				scope: {
-					height: '=',
-					ellipsis: '=ellipsis'
-				},
-				link: function($scope) {
-					if (!$scope.ellipsis) {
-						$scope.ellipsis = '&hellip;';
-					}
+					ellipsis: '=',
+					ellipsisType: '=',
+					ellipsisStyle: '='
 				},
 				template: ''
 					+ '<div class="ml-ellipsis">'
 						+ '<div class="ml-ellipsis-before"></div>'
 						+ '<div class="ml-ellipsis-content" ng-transclude></div>'
-						+ '<div class="ml-ellipsis-after">{{ellipsis}}</div>'
+						+ '<div class="ml-ellipsis-after">'
+							+ '<span ng-if="!ellipsis" ng-style="ellipsisStyle">&hellip;</span>'
+							+ '<span ng-if="ellipsis && (ellipsisType == \'text\' || !ellipsisType)" ng-bind="ellipsis" ng-style="ellipsisStyle"></span>'
+							+ '<span ng-if="ellipsis && ellipsisType == \'html\'" ng-bind-html="ellipsis" ng-style="ellipsisStyle"></span>'
+						+ '</div>'
 					+ '</div>'
 			};
 		});

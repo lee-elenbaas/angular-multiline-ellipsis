@@ -19,6 +19,8 @@
 }
 
 .ml-ellipsis > .ml-ellipsis-after {
+	white-space: nowrap;
+	
 	box-sizing: content-box;
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
