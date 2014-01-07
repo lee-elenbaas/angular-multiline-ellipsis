@@ -1,0 +1,25 @@
+label {
+	display: block;
+}
+
+.display-layout .ml-ellipsis {
+	opacity: 0.7;
+	border: 5px solid #AAA;
+	
+	overflow: visible;
+}
+
+.display-layout .ml-ellipsis > .ml-ellipsis-before {
+	opacity: 0.7;
+	background-color: #F0F;
+}
+
+.display-layout .ml-ellipsis > .ml-ellipsis-content {
+	opacity: 0.7;
+	background-color: #AFF;
+}
+
+.display-layout .ml-ellipsis > .ml-ellipsis-after {
+	opacity: 0.7;
+	background-color: #FAA;
+}
