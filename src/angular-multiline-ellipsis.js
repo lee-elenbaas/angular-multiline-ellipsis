@@ -19,7 +19,9 @@
 						+ '<div class="ml-ellipsis-after">'
 							+ '<span ng-if="!ellipsis && !ellipsisUrl" ng-style="ellipsisStyle">&hellip;</span>'
 							+ '<span ng-if="ellipsis" ng-bind="ellipsis" ng-style="ellipsisStyle"></span>'
-							+ '<span ng-if="!ellipsis && ellipsisUrl" ng-include="ellipsis" ng-style="ellipsisStyle"></span>'
+							+ '<span ng-if="!ellipsis && ellipsisUrl">'
+								+ '<span ng-include="ellipsis" ng-style="ellipsisStyle"></span>'
+							+ '</span>'
 						+ '</div>'
 					+ '</div>'
 			};
