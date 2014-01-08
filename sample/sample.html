@@ -4,7 +4,7 @@
 		<title>Multi line ellipsis samples</title>
 		<link href="../src/angular-multiline-ellipsis.css" rel="stylesheet" type="text/css" />
 		<link href="sample.css" rel="stylesheet" type="text/css" />
-		<script type="application/ecmascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js"></script>
+		<script type="application/ecmascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
 		<script type="application/ecmascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-sanitize.min.js"></script>
 		<script type="application/ecmascript" src="../src/angular-multiline-ellipsis.js"></script>
 		<script type="application/ecmascript" src="sample.js"></script>
@@ -13,8 +13,9 @@
 		<h1>Multi line ellipsis samples</h1>
 		<div ng-controller="simpleSampleCtrl">
 			<h2>Simple text usage</h2>
+			<p>Just use as is</p>
 			<fieldset>
-				<legend>Paraeters</legend>
+				<legend>Parameters</legend>
 				<label>
 					<div>Content:</div>
 					<textarea ng-model="content"></textarea>
@@ -25,13 +26,17 @@
 			</fieldset>
 			<fieldset>
 				<legend>Result</legend>
-				<div ml-ellipsis ng-style="style" ng-class="{ 'display-layout':displayLayout }">{{content}}</div>
+				<div ml-ellipsis 
+					ng-style="style" ng-class="{ 'display-layout':displayLayout }">
+					{{content}}
+				</div>
 			</fieldset>
 		</div>
 		<div ng-controller="ellipsisSampleCtrl">
 			<h2>Ellipsis test usage</h2>
+			<p>Show how the ellipsis can be set to something else</p>
 			<fieldset>
-				<legend>Paraeters</legend>
+				<legend>Parameters</legend>
 				<label>
 					<div>Content:</div>
 					<textarea ng-model="content"></textarea>
@@ -43,8 +48,66 @@
 			</fieldset>
 			<fieldset>
 				<legend>Result</legend>
-				<div ml-ellipsis ellipsis="ellipsis" ng-style="style" ng-class="{ 'display-layout':displayLayout }">
+				<div ml-ellipsis ellipsis="ellipsis" 
+					ng-style="style" ng-class="{ 'display-layout':displayLayout }">
 					<span ng-bind-html="content"></span>
+				</div>
+			</fieldset>
+		</div>
+		<div ng-controller="advancedSampleCtrl">
+			<h2>Ellipsis Advanced usage</h2>
+			<p>Show how to style the ellipsis, and place html content<p>
+			<p>Note that for this to work ngBindHtml needs to work so the angular-sanitize needs to be loaded as well</p>
+			<fieldset>
+				<legend>Parameters</legend>
+				<label>
+					<div>Content:</div>
+					<textarea ng-model="content"></textarea>
+				</label>
+				<label>Height: <input ng-model="style.height" /></label>
+				<label>Width: <input ng-model="style.width" /></label>
+				<label><input type="checkbox" ng-model="displayLayout" /> Dislpay layout</label>
+				<fieldset>
+					<legend>Ellipsis</legend>
+					<label>Content: <input ng-model="ellipsis" /></label>
+					<label>Width: <input ng-model="ellipsisWidth" /></label>
+					<label><input type="checkbox" ng-model="ellipsisBold" /> Bold</label>
+					<label>
+						Type: 
+						<select ng-model="ellipsisType">
+							<option value="text">text</option>
+							<option value="html">html</option>
+							<option value="html">templateUrl</option>
+						</select>
+					</label>
+				</fieldset>
+			</fieldset>
+			<fieldset>
+				<legend>Result</legend>
+				<div ml-ellipsis ellipsis="ellipsis" ellipsis-type="ellipsisType" ellipsis-style="ellipsisStyle()" 
+					ng-style="style" ng-class="{ 'display-layout':displayLayout }">
+					{{content}}
+				</div>
+			</fieldset>
+		</div>
+		<div ng-controller="templateSampleCtrl">
+			<h2>Ellipsis Template usage</h2>
+			<p>Show how to template the ellipsis content<p>
+			<fieldset>
+				<legend>Parameters</legend>
+				<label>
+					<div>Content:</div>
+					<textarea ng-model="content"></textarea>
+				</label>
+				<label>Height: <input ng-model="style.height" /></label>
+				<label>Width: <input ng-model="style.width" /></label>
+				<label><input type="checkbox" ng-model="displayLayout" /> Dislpay layout</label>
+			</fieldset>
+			<fieldset>
+				<legend>Result</legend>
+				<div ml-ellipsis ellipsis="'more.partial.html'" ellipsis-type="'templateUrl'" ellipsis-style="ellipsisStyle" 
+					ng-style="style" ng-class="{ 'display-layout':displayLayout }">
+					{{content}}
 				</div>
 			</fieldset>
 		</div>
