@@ -5,7 +5,6 @@
 		<link href="../src/angular-multiline-ellipsis.css" rel="stylesheet" type="text/css" />
 		<link href="sample.css" rel="stylesheet" type="text/css" />
 		<script type="application/ecmascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
-		<script type="application/ecmascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-sanitize.min.js"></script>
 		<script type="application/ecmascript" src="../src/angular-multiline-ellipsis.js"></script>
 		<script type="application/ecmascript" src="sample.js"></script>
 	</head>
@@ -32,32 +31,9 @@
 				</div>
 			</fieldset>
 		</div>
-		<div ng-controller="ellipsisSampleCtrl">
-			<h2>Ellipsis test usage</h2>
-			<p>Show how the ellipsis can be set to something else</p>
-			<fieldset>
-				<legend>Parameters</legend>
-				<label>
-					<div>Content:</div>
-					<textarea ng-model="content"></textarea>
-				</label>
-				<label>Height: <input ng-model="style.height" /></label>
-				<label>Width: <input ng-model="style.width" /></label>
-				<label><input type="checkbox" ng-model="displayLayout" /> Dislpay layout</label>
-				<label>Ellipsis: <input ng-model="ellipsis" /></label>
-			</fieldset>
-			<fieldset>
-				<legend>Result</legend>
-				<div ml-ellipsis ellipsis="ellipsis" 
-					ng-style="style" ng-class="{ 'display-layout':displayLayout }">
-					<span ng-bind-html="content"></span>
-				</div>
-			</fieldset>
-		</div>
-		<div ng-controller="advancedSampleCtrl">
-			<h2>Ellipsis Advanced usage</h2>
+		<div ng-controller="styleSampleCtrl">
+			<h2>Ellipsis Style usage</h2>
 			<p>Show how to style the ellipsis, and place html content<p>
-			<p>Note that for this to work ngBindHtml needs to work so the angular-sanitize needs to be loaded as well</p>
 			<fieldset>
 				<legend>Parameters</legend>
 				<label>
@@ -72,21 +48,13 @@
 					<label>Content: <input ng-model="ellipsis" /></label>
 					<label>Width: <input ng-model="ellipsisWidth" /></label>
 					<label><input type="checkbox" ng-model="ellipsisBold" /> Bold</label>
-					<label>
-						Type: 
-						<select ng-model="ellipsisType">
-							<option value="text">text</option>
-							<option value="html">html</option>
-							<option value="html">templateUrl</option>
-						</select>
-					</label>
 				</fieldset>
 			</fieldset>
 			<fieldset>
 				<legend>Result</legend>
-				<div ml-ellipsis ellipsis="ellipsis" ellipsis-type="ellipsisType" ellipsis-style="ellipsisStyle()" 
+				<div ml-ellipsis ellipsis="ellipsis" ellipsis-style="ellipsisStyle()" 
 					ng-style="style" ng-class="{ 'display-layout':displayLayout }">
-					{{content}}
+					<span title="{{content}}">{{content}}</span>
 				</div>
 			</fieldset>
 		</div>
@@ -105,7 +73,7 @@
 			</fieldset>
 			<fieldset>
 				<legend>Result</legend>
-				<div ml-ellipsis ellipsis="'more.partial.html'" ellipsis-type="'templateUrl'" ellipsis-style="ellipsisStyle" 
+				<div ml-ellipsis ellipsisUrl="'more.partial.html'" ellipsis-style="ellipsisStyle" 
 					ng-style="style" ng-class="{ 'display-layout':displayLayout }">
 					{{content}}
 				</div>
