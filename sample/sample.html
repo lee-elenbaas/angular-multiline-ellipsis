@@ -1,7 +1,7 @@
 <!doctype html>
 <html ng-app="angularMultiLineEllipsisSample">
 	<head>
-		<title>Multi line ellipsis samples</title>
+		<title>Multi line ellipsis Angular directive</title>
 		<link href="../src/angular-multiline-ellipsis.css" rel="stylesheet" type="text/css" />
 		<link href="sample.css" rel="stylesheet" type="text/css" />
 		<script type="application/ecmascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
@@ -9,7 +9,12 @@
 		<script type="application/ecmascript" src="sample.js"></script>
 	</head>
 	<body>
-		<h1>Multi line ellipsis samples</h1>
+		<h1>Multi line ellipsis Angular directive</h1>
+		<p>This is a reusable angular directive that provide support for multiline ellipsis.</p>
+		<p>It is based on the isea presented by <a href="https://www.mobify.com/blog/multiline-ellipsis-in-pure-css/">Mobify</a></p>
+		<p>Note: this implementation assumes that the content wraps and uses height to determine overflow situation. 
+		In cases where content gets truncated due to its width, this implementation is not good enough.</p>
+		<p>You can <a href="https://github.com/lee-elenbaas/angular-multiline-ellipsis/archive/master.zip">download</a> or fork from <a href="https://github.com/lee-elenbaas/angular-multiline-ellipsis">GitHub</a></p>
 		<div ng-controller="simpleSampleCtrl">
 			<h2>Simple text usage</h2>
 			<p>Just use as is</p>
