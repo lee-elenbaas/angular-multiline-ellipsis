@@ -17,11 +17,11 @@
 						+ '<div class="ml-ellipsis-before"></div>'
 						+ '<div class="ml-ellipsis-content" ng-transclude></div>'
 						+ '<div class="ml-ellipsis-after">'
-							+ '<span ng-if="!ellipsis && !ellipsisUrl" ng-style="ellipsisStyle">&hellip;</span>'
 							+ '<span ng-if="ellipsis" ng-bind="ellipsis" ng-style="ellipsisStyle"></span>'
 							+ '<span ng-if="!ellipsis && ellipsisUrl" ml-ellipsis-exclude-from-isolated>'
 								+ '<span ng-include="ellipsisUrl" ng-style="ellipsisStyle"></span>'
 							+ '</span>'
+							+ '<span ng-if="!ellipsis && !ellipsisUrl" ng-style="ellipsisStyle">&hellip;</span>'
 						+ '</div>'
 					+ '</div>'
 			};
@@ -30,6 +30,7 @@
 		  return {
 			restrict: "ea",
 			require: '^mlEllipsis',
+			scope: false,
 			link: [ '$transclude', function($scope, $element, $attrs, $transclude) {
 				$transclude($scope.$parent, function(clone) {
 				  $element.empty();
