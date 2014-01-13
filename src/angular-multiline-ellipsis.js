@@ -31,10 +31,10 @@
 			restrict: "EA",
 			transclude: true,
 			link: [ '$transclude', function (scope, elm, attr, ctrl, $transclude) {
-			  $transclude(scope.$parent), function(clone){
+			  $transclude(scope.$parent, function(clone){
 				elm.replaceWith(clone);
 			  });
-			}
+			} ]
 		  }
 		})
 		;
