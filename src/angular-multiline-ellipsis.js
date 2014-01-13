@@ -35,7 +35,7 @@
 				  $element.empty();
 				  $element.append(clone);
 				});
-			}
+			} ]
 		  };
 		})
 		;
