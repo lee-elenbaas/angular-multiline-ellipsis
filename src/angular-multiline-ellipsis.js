@@ -43,7 +43,7 @@
 		.directive('mlEllipsisExcludeFromIsolated', function() {
 		  return {
 			restrict: "EA",
-			require: '^mlEllipsis'
+			require: '^mlEllipsis',
 			transclude: true,
 			link: function($scope, $element, $attrs, controller) {
 				controller.$transclude(function(clone) {
