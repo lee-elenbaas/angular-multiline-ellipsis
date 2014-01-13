@@ -36,7 +36,6 @@
 		  return {
 			restrict: "EA",
 			require: '^mlEllipsis',
-			transclude: true,
 			link: function($scope, $element, $attrs, controller) {
 				controller.$transclude(function(clone) {
 				  $element.empty();
