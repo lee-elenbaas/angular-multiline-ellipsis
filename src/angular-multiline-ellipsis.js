@@ -30,11 +30,26 @@
 		  return {
 			restrict: "EA",
 			transclude: true,
-			link: [ '$transclude', function (scope, elm, attr, ctrl, $transclude) {
-			  $transclude(scope.$parent, function(clone){
-				elm.replaceWith(clone);
-			  });
-			} ]
+			controller: ['$element', '$transclude', function($element, $transclude) {
+				if (!$transclude) {
+				  throw minErr('ngTransclude')('orphan',
+					  'Illegal use of ngTransclude directive in the template! ' +
+					  'No parent directive that requires a transclusion found. ' +
+					  'Element: {0}',
+					  startingTag($element));
+				}
+
+				// remember the transclusion fn but call it during linking so that we don't process transclusion before directives on
+				// the parent element even when the transclusion replaces the current element. (we can't use priority here because
+				// that applies only to compile fns and not controllers
+				this.$transclude = $transclude;
+			}],
+			link: function($scope, $element, $attrs, controller) {
+				controller.$transclude(scope.$parent, function(clone) {
+				  $element.empty();
+				  $element.append(clone);
+				});
+			}
 		  }
 		})
 		;
