@@ -12,12 +12,6 @@
 					ellipsisUrl: '=',
 					ellipsisStyle: '='
 				},
-				controller: ['$element', '$transclude', function($element, $transclude) {
-					// remember the transclusion fn but call it during linking so that we don't process transclusion before directives on
-					// the parent element even when the transclusion replaces the current element. (we can't use priority here because
-					// that applies only to compile fns and not controllers
-					this.$transclude = $transclude;
-				}],
 				template: ''
 					+ '<div class="ml-ellipsis">'
 						+ '<div class="ml-ellipsis-before"></div>'
@@ -36,8 +30,8 @@
 		  return {
 			restrict: "EA",
 			require: '^mlEllipsis',
-			link: function($scope, $element, $attrs, controller) {
-				controller.$transclude($scope.$parent, function(clone) {
+			link: [ '$transclude', function($scope, $element, $attrs, $transclude) {
+				$transclude($scope.$parent, function(clone) {
 				  $element.empty();
 				  $element.append(clone);
 				});
