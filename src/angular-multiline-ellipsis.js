@@ -26,10 +26,10 @@
 					+ '</div>'
 			};
 		})
-		.directive('mlellipsisexcludefromisolated', function() {
+		.directive('mlEllipsisExcludeFromIsolated', function() {
 		  return {
 			restrict: "ea",
-			require: '^mlellipsis',
+			require: '^mlEllipsis',
 			link: [ '$transclude', function($scope, $element, $attrs, $transclude) {
 				$transclude($scope.$parent, function(clone) {
 				  $element.empty();
