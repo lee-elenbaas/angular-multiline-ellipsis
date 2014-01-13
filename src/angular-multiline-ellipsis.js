@@ -26,18 +26,18 @@
 					+ '</div>'
 			};
 		})
-		// .directive('mlEllipsisExcludeFromIsolated', function() {
-		  // return {
-			// restrict: "EA",
-			// require: '^mlEllipsis',
-			// link: [ '$transclude', function($scope, $element, $attrs, $transclude) {
-				// $transclude($scope.$parent, function(clone) {
-				  // $element.empty();
-				  // $element.append(clone);
-				// });
-			// } ]
-		  // };
-		// })
+		.directive('mlellipsisexcludefromisolated', function() {
+		  return {
+			restrict: "ea",
+			require: '^mlellipsis',
+			link: [ '$transclude', function($scope, $element, $attrs, $transclude) {
+				$transclude($scope.$parent, function(clone) {
+				  $element.empty();
+				  $element.append(clone);
+				});
+			} ]
+		  };
+		})
 		;
 		
 }(angular));
